@@ -54,10 +54,8 @@ def parse_ipv4_endpoint(endpoint):
         return None  
 
 def get_local_ipv4():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("10.255.255.255", 1)) # dummy ip
-    ip = s.getsockname()[0]
-    s.close()
+    hostname=socket.gethostname()   
+    ip=socket.gethostbyname(hostname)   
     return ip
 
 def find_file_in_dirs(name, dirs):
